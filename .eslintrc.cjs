@@ -18,10 +18,24 @@ module.exports = {
       version: "detect",
     },
   },
-  plugins: ["@typescript-eslint", "react", "prettier", "unused-imports", "simple-import-sort"],
-  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:react-hooks/recommended", "plugin:@typescript-eslint/recommended"],
+  plugins: [
+    "@typescript-eslint",
+    "react",
+    "prettier",
+    "unused-imports",
+    "simple-import-sort",
+  ],
+  extends: [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
   rules: {
-    "react/jsx-curly-brace-presence": ["error", { props: "never", children: "never" }],
+    "react/jsx-curly-brace-presence": [
+      "error",
+      { props: "never", children: "never" },
+    ],
     "no-async-promise-executor": "off",
     "react/prop-types": "off",
     "react/display-name": "off",
@@ -57,9 +71,9 @@ module.exports = {
           // Side effect imports.
           ["^\\u0000"],
           // Other relative imports. Put same-folder imports and `.` last.
-          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"]
-        ]
-      }
-    ]
-  }
+          ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+        ],
+      },
+    ],
+  },
 }

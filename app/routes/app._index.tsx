@@ -1,5 +1,7 @@
 import type { LoaderFunctionArgs } from "@remix-run/node"
+
 import { BlockStack, Card, Layout, Page, Text } from "@shopify/polaris"
+
 import { authenticate } from "../shopify.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -18,7 +20,8 @@ export default function Index() {
                 Welcome to the Shopify Extensions Showcase app.
               </Text>
               <Text as="p">
-                This app is a collection of Shopify extensions to demonstrate the capabilities of the Shopify platform.
+                This app is a collection of Shopify extensions to demonstrate
+                the capabilities of the Shopify platform.
               </Text>
             </BlockStack>
           </Card>
@@ -27,4 +30,3 @@ export default function Index() {
     </Page>
   )
 }
-

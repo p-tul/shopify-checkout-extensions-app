@@ -1,13 +1,15 @@
 import type { HeadersFunction, LoaderFunctionArgs } from "@remix-run/node"
 import { json } from "@remix-run/node"
 import { Link, Outlet, useLoaderData, useRouteError } from "@remix-run/react"
+
 import { AppProvider as PolarisAppProvider } from "@shopify/polaris"
-import { AppProvider } from "@shopify/shopify-app-remix/react"
 import enPolarisTranslations from "@shopify/polaris/locales/en.json"
+import { AppProvider } from "@shopify/shopify-app-remix/react"
 import { boundary } from "@shopify/shopify-app-remix/server"
-import { authenticate } from "../shopify.server"
 
 import "@shopify/polaris/build/esm/styles.css"
+
+import { authenticate } from "../shopify.server"
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   await authenticate.admin(request)
@@ -21,12 +23,12 @@ export default function App() {
   return (
     <AppProvider isEmbeddedApp apiKey={apiKey}>
       <PolarisAppProvider i18n={enPolarisTranslations}>
-          <ui-nav-menu>
-            <Link to="/app" rel="home">
-              Home
-            </Link>
-          </ui-nav-menu>
-          <Outlet />
+        <ui-nav-menu>
+          <Link to="/app" rel="home">
+            Home
+          </Link>
+        </ui-nav-menu>
+        <Outlet />
       </PolarisAppProvider>
     </AppProvider>
   )
@@ -37,6 +39,6 @@ export function ErrorBoundary() {
   return boundary.error(useRouteError())
 }
 
-export const headers: HeadersFunction = headersArgs => {
+export const headers: HeadersFunction = (headersArgs) => {
   return boundary.headers(headersArgs)
 }
