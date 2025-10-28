@@ -1,0 +1,22 @@
+query RunInput {
+  cart {
+    lines {
+      merchandise {
+        ... on ProductVariant {
+          product {
+            id
+          }
+        }
+      }
+    }
+  }
+  paymentMethods {
+    id
+    name
+  }
+  paymentCustomization {
+    metafield(namespace: "$app:payment-method-hiding", key: "function-configuration") {
+      value
+    }
+  }
+}

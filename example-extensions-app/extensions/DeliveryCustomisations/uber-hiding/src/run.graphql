@@ -1,0 +1,32 @@
+query RunInput {
+  cart {
+    deliveryGroups {
+      deliveryAddress {
+        provinceCode
+      }
+      deliveryOptions {
+        handle
+        title
+        description
+        code
+        deliveryMethodType
+      }
+    }
+  }
+  shop {
+    localTime {
+      date
+      uberEnabledVICNSWTAS: timeBetween(startTime: "10:00:00", endTime: "15:00:00")
+      uberEnabledSA: timeBetween(startTime: "10:30:00", endTime: "15:30:00")
+      uberEnabledQLD: timeBetween(startTime: "10:00:00", endTime: "15:00:00")
+      uberEnabledQLDDST: timeBetween(startTime: "11:00:00", endTime: "16:00:00")
+      uberEnabledWA: timeBetween(startTime: "12:00:00", endTime: "17:00:00")
+      uberEnabledWADST: timeBetween(startTime: "13:00:00", endTime: "18:00:00")
+    }
+  }
+  deliveryCustomization {
+    metafield(namespace: "$app:uber-hiding", key: "function-configuration") {
+      value
+    }
+  }
+}

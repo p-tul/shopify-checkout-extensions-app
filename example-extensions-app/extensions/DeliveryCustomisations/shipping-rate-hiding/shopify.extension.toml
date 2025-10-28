@@ -1,0 +1,25 @@
+api_version = "2025-01"
+
+[[extensions]]
+name = "t:name"
+handle = "shipping-rate-hiding"
+type = "function"
+
+description = "t:description"
+
+  [[extensions.targeting]]
+  target = "purchase.delivery-customization.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui.paths]
+  create = "/app/shipping-rate-hiding/:functionId/new"
+  details = "/app/shipping-rate-hiding/:functionId/:id"
+
+  [extensions.input.variables]
+  namespace = "$app:shipping-rate-hiding"
+  key = "function-configuration"

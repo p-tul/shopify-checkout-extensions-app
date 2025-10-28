@@ -1,0 +1,20 @@
+api_version = "2025-01"
+
+[[extensions]]
+handle = "payment-method-hiding"
+name = "t:name"
+description = "t:description"
+type = "function"
+
+  [[extensions.targeting]]
+  target = "purchase.payment-customization.run"
+  input_query = "src/run.graphql"
+  export = "run"
+
+  [extensions.build]
+  command = ""
+  path = "dist/function.wasm"
+
+  [extensions.ui.paths]
+  create = "/app/payment-method-hiding/:functionId/new"
+  details = "/app/payment-method-hiding/:functionId/:id"

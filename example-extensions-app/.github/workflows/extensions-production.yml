@@ -1,0 +1,35 @@
+name: Extensions (production)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  production-deploy:
+    name: Deploy Extensions (production)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup (checkout)
+        uses: actions/checkout@v4
+
+      - name: Setup (node)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          check-latest: true
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install dependencies
+        run: |
+          pnpm i
+      - name: Deploy Shopify App
+        env:
+          SHOPIFY_CLI_PARTNERS_TOKEN: ${{ secrets.SHOPIFY_CLI_PARTNERS_TOKEN }}
+          SHOPIFY_FLAG_SOURCE_CONTROL_URL: ${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}
+        run: pnpm run deploy:production

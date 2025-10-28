@@ -1,0 +1,20 @@
+query RunInput {
+  cart {
+    deliveryGroups {
+      deliveryAddress {
+        zip
+      }
+      deliveryOptions {
+        code
+        deliveryMethodType
+        handle
+        title
+      }
+    }
+  }
+  deliveryCustomization {
+    metafield(namespace: "$app:metro-shipping-rate", key: "function-configuration") {
+      value
+    }
+  }
+}

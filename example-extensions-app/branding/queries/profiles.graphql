@@ -1,0 +1,11 @@
+# Checkout Profile ID
+query checkoutProfiles {
+  checkoutProfiles(first: 1, query: "is_published:true") {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}

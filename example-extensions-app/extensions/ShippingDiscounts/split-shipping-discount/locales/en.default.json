@@ -1,0 +1,4 @@
+{
+  "name": "Split Shipping Discount",
+  "description": "Prevents duplicated shipping fees due to split fulfilments"
+}

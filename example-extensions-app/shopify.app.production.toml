@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "f4a5aa68c5c31e40c2ef19b3e1c136ac"
+name = "DECJUBA Functions"
+handle = "decjuba-functions"
+application_url = "https://decjuba-extensions-production.onrender.com/"
+embedded = true
+extension_directories = ["extensions/*"]
+
+[build]
+automatically_update_urls_on_dev = false
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_checkout_branding_settings,read_orders,read_shipping,write_checkout_branding_settings,write_delivery_customizations,write_payment_customizations,write_discounts,write_orders"
+
+[auth]
+redirect_urls = [
+  "https://decjuba-extensions-production.onrender.com/auth/callback",
+  "https://decjuba-extensions-production.onrender.com/auth/shopify/callback",
+  "https://decjuba-extensions-production.onrender.com/api/auth/callback",
+]
+
+[webhooks]
+api_version = "2025-01"
+
+[pos]
+embedded = false
